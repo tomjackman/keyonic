@@ -20,7 +20,7 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
 }
 
 .pane {
-    background-color: #464646;
+    background-color: #fff;
 }
 
 .button.button-balanced {
@@ -29,7 +29,19 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
     color: #fff;
 }
 
+.button.button-balanced.activated {
+    border-color: transparent;
+    background-color: #1fc79b;
+    color: #fff;
+}
+
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
     background: #464646;
     border-color: #1fc79b;
+}
+
+.button.button-positive {
+    border-color: transparent;
+    background-color: #1fc79b;
+    color: #fff;
 }

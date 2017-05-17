@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('ProfileCtrl', function($scope, Keycloak) {
+.controller('ProfileCtrl', function($scope, $ionicPopup, Keycloak) {
 
   $scope.showProfile = false;
 
@@ -8,9 +8,11 @@ angular.module('starter.controllers', [])
     Keycloak.loadUserProfile().then(function(profile) {
       $scope.user = profile;
       $scope.showProfile = true;
-      console.log(profile);
     }, function(err) {
-      console.log(err);
+      $ionicPopup.alert({
+       title: 'Error',
+       template: err
+     });
     });
   };
 
@@ -19,30 +21,20 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatsCtrl', function($scope, Chats, Keycloak) {
+.controller('AccessCtrl', function($scope, Chats, Keycloak) {
 
-  $scope.keycloakInit = function() {
-    Keycloak.init();
+  $scope.$on('$ionicView.loaded', function () {
+    $scope.resourceRole = Keycloak.hasResourceRole("admin");
+    $scope.realmRole = Keycloak.hasRealmRole("admin");
+    $scope.keycloak = Keycloak.returnKeycloak();
+    console.log($scope.keycloak);
+  });
+
+
+})
+
+.controller('AccountCtrl', function($scope, Keycloak) {
+  $scope.manageAccount = function() {
+    Keycloak.manageAccount();
   }
-
-$scope.click = function() {
-  $scope.resourceRole = keycloak.hasResourceRole("admin");
-  $scope.realmRole = keycloak.hasRealmRole("admin");
-  $scope.authenticated = keycloak.authenticated;
-}
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
 });

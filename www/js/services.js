@@ -26,12 +26,24 @@ angular.module('starter.services', [])
         keycloak.loadUserProfile().success(function(profile) {
           resolve(profile);
         }).error(function() {
-          reject("Error Getting Profile Data");
+          reject("Error Obtaining Profile Data.");
        });
      });
    },
+   hasResourceRole: function(role) {
+     return keycloak.hasResourceRole(role);
+   },
+   hasRealmRole: function(role) {
+     return keycloak.hasRealmRole();
+   },
    logout: function() {
      keycloak.logout({redirectUri: "http://10.32.241.8:8100"});
+   },
+   manageAccount: function() {
+     keycloak.accountManagement();
+   },
+   returnKeycloak: function() {
+     return keycloak;
    }
   };
 })

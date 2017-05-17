@@ -1,0 +1,60 @@
+<ion-view view-title="Access" >
+  <ion-content>
+
+    <div class="item item-icon-left">
+      <i class="icon ion-ios-locked-outline"></i>
+      Access Control
+    </div>
+
+    <a class="item item-icon-left" href="#">
+      <i class="icon ion-android-globe"></i>
+      {{keycloak.authServerUrl}}
+      <span class="item-note">
+        Auth Server
+      </span>
+    </a>
+
+    <a class="item item-icon-left" href="#">
+      <i class="icon ion-cube"></i>
+      {{keycloak.realm}}
+      <span class="item-note">
+        Keycloak Realm
+      </span>
+    </a>
+
+    <a class="item item-icon-left" href="#">
+      <i class="icon ion-android-apps"></i>
+      {{keycloak.clientId}}
+      <span class="item-note">
+        Keycloak Client ID
+      </span>
+    </a>
+
+    <div class="item item-icon-left item-divider">
+      <i class="icon ion-ios-people"></i>
+      Account Access Roles
+    </div>
+
+    <div ng-repeat="role in keycloak.resourceAccess.account.roles">
+     <div class="item item-icon-left">
+       <i class="icon ion-android-lock"></i>
+       {{role}}
+     </div>
+   </div>
+
+   <div class="item item-icon-left item-divider">
+     <i class="icon ion-ios-people"></i>
+     Realm Roles
+   </div>
+
+   <div ng-repeat="role in keycloak.realmAccess.roles">
+    <div class="item item-icon-left">
+      <i class="icon ion-android-lock"></i>
+      {{role}}
+    </div>
+  </div>
+
+
+
+  </ion-content>
+</ion-view>

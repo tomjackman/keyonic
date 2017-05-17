@@ -1,9 +1,10 @@
 <ion-view view-title="Account">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <div class="card" ng-click="manageAccount()">
+      <div class="item item-text-wrap item-icon-left">
+        <i class="icon ion-ios-cog-outline"></i>
+        Manage Keycloak Account
+      </div>
+    </div>
   </ion-content>
 </ion-view>

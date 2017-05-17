@@ -1,5 +1,14 @@
 <ion-view view-title="Chats">
   <ion-content>
+    <p>{{userProfile}}</p>
+    <div class="button" ng-click="click()">Click Me</div>
+    <p>resource role {{resourceRole}}</p>
+    <p>realm role {{realmRole}}</p>
+    <p>auth {{authenticated}}</p>
+
+    <div class="button" ng-click="keycloakInit()">Keycloak Init</div>
+    <div class="button" ng-click="keycloakLoadUserProfile()">Keycloak Get User Profile</div>
+    <p>profile {{userProfile}}</p>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
         <img ng-src="{{chat.face}}">

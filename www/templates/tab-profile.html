@@ -1,0 +1,41 @@
+<ion-view view-title="Keyonic">
+  <ion-content class="padding">
+
+<div class="card" ng-if="!showProfile">
+  <div class="item item-text-wrap">
+    <p>Welcome to Keyonic - An Ionic 2 Application with Keycloak.</p>
+  </div>
+</div>
+
+
+<div class="list card" ng-if="showProfile">
+
+<div class="item item-avatar">
+  <img ng-src={{user.attributes.avatar[0]}}>
+  <h2>{{user.firstName}} {{user.lastName}} ({{user.username}})</h2>
+  <p>{{user.email}}</p>
+</div>
+
+<div class="item item-body">
+  <pre>{{user.id}}</pre>
+</div>
+
+<div class="item item-body">
+  <ion-list>
+    <ion-checkbox ng-model="user.enabled">Enabled</ion-checkbox>
+    <ion-checkbox ng-model="user.emailVerified">Email Verified</ion-checkbox>
+  </ion-list>
+</div>
+
+</div>
+
+<button class="button button-full button-balanced" ng-click="keycloakLoadUserProfile()" ng-if="!showProfile">
+Show User Profile  <i class="icon ion-ios-arrow-right"></i>
+</button>
+
+<button class="button button-full button-balanced" ng-click="logout()" ng-if="showProfile">
+  Logout <i class="icon ion-ios-close-empty"></i>
+</button>
+
+  </ion-content>
+</ion-view>

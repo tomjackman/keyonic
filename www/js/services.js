@@ -1,5 +1,41 @@
 angular.module('starter.services', [])
 
+.factory('Keycloak', function($q) {
+
+  var keycloak = Keycloak({
+    "realm": "keypress",
+    "url": "http://localhost:8080/auth",
+    "ssl-required": "external",
+    "clientId": "keypress-mobile",
+    "resource": "keypress-mobile",
+    "public-client": true,
+    "use-resource-role-mappings": true,
+    "adapter": "corodva"
+  });
+
+  return {
+    init: function() {
+      keycloak.init({ onLoad: 'login-required', responseMode: 'query'}).success(function(authenticated) {
+        console.log("Authenticated:", authenticated);
+      }).error(function() {
+        console.error("Error Authenticating");
+      })
+    },
+    loadUserProfile: function() {
+      return $q(function(resolve, reject) {
+        keycloak.loadUserProfile().success(function(profile) {
+          resolve(profile);
+        }).error(function() {
+          reject("Error Getting Profile Data");
+       });
+     });
+   },
+   logout: function() {
+     keycloak.logout({redirectUri: "http://10.32.241.8:8100"});
+   }
+  };
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

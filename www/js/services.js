@@ -34,7 +34,7 @@ angular.module('starter.services', [])
      return keycloak.hasResourceRole(role);
    },
    hasRealmRole: function(role) {
-     return keycloak.hasRealmRole();
+     return keycloak.hasRealmRole(role, keycloak.clientId);
    },
    logout: function() {
      keycloak.logout({redirectUri: "http://10.32.241.8:8100"});

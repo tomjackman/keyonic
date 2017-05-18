@@ -1,13 +1,8 @@
 <ion-view view-title="Access" >
   <ion-content>
 
-    <div class="item item-icon-left">
-      <i class="icon ion-ios-locked-outline"></i>
-      Access Control
-    </div>
-
     <a class="item item-icon-left" href="#">
-      <i class="icon ion-android-globe"></i>
+      <i class="icon ion-ios-world-outline balanced"></i>
       {{keycloak.authServerUrl}}
       <span class="item-note">
         Auth Server
@@ -15,7 +10,7 @@
     </a>
 
     <a class="item item-icon-left" href="#">
-      <i class="icon ion-cube"></i>
+      <i class="icon ion-cube balanced"></i>
       {{keycloak.realm}}
       <span class="item-note">
         Keycloak Realm
@@ -23,7 +18,7 @@
     </a>
 
     <a class="item item-icon-left" href="#">
-      <i class="icon ion-android-apps"></i>
+      <i class="icon ion-android-apps balanced"></i>
       {{keycloak.clientId}}
       <span class="item-note">
         Keycloak Client ID
@@ -37,7 +32,7 @@
 
     <div ng-repeat="role in keycloak.resourceAccess.account.roles">
      <div class="item item-icon-left">
-       <i class="icon ion-android-lock"></i>
+       <i class="icon ion-ios-unlocked-outline balanced"></i>
        {{role}}
      </div>
    </div>
@@ -49,12 +44,46 @@
 
    <div ng-repeat="role in keycloak.realmAccess.roles">
     <div class="item item-icon-left">
-      <i class="icon ion-android-lock"></i>
+      <i class="icon ion-ios-unlocked-outline balanced"></i>
       {{role}}
     </div>
   </div>
 
+  <div class="item item-icon-left item-divider">
+    <i class="icon ion-lock-combination"></i>
+    Access Control
+  </div>
 
+  <div class="item item-icon-left" ng-if="adminRealmRole">
+    <i class="icon ion-ios-unlocked-outline assertive"></i>
+    Admin Access
+    <span class="item-note">
+      Via 'admin' Role
+    </span>
+  </div>
 
+  <div class="item item-icon-left" ng-if="driverRealmRole">
+    <i class="icon ion-model-s"></i>
+    Driver Access
+    <span class="item-note">
+      Via 'driver' Role
+    </span>
+  </div>
+
+  <div class="item item-icon-left" ng-if="backofficeRealmRole">
+    <i class="icon ion-edit"></i>
+    Backoffice Access
+    <span class="item-note">
+      Via 'backoffice' Role
+    </span>
+  </div>
+
+  <div class="item item-icon-left" ng-if="managementRealmRole">
+    <i class="icon ion-ios-people"></i>
+    Management Access
+    <span class="item-note">
+      Via 'management' Role
+    </span>
+  </div>
   </ion-content>
 </ion-view>

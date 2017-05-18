@@ -4,6 +4,10 @@ angular.module('starter.controllers', [])
 
   $scope.showProfile = false;
 
+  $scope.$on('$ionicView.loaded', function () {
+    $scope.keycloakLoadUserProfile();
+  });
+
   $scope.keycloakLoadUserProfile = function() {
     Keycloak.loadUserProfile().then(function(profile) {
       $scope.user = profile;
@@ -15,19 +19,19 @@ angular.module('starter.controllers', [])
      });
     });
   };
-
-  $scope.logout = function() {
-    Keycloak.logout();
-  };
 })
 
 .controller('AccessCtrl', function($scope, Chats, Keycloak) {
 
   $scope.$on('$ionicView.loaded', function () {
-    $scope.resourceRole = Keycloak.hasResourceRole("admin");
-    $scope.realmRole = Keycloak.hasRealmRole("admin");
+    // simple checking of roles to show/hide content based on role
+    $scope.adminRealmRole = Keycloak.hasRealmRole("admin");
+    $scope.driverRealmRole = Keycloak.hasRealmRole("driver");
+    $scope.managementRealmRole = Keycloak.hasRealmRole("management");
+    $scope.backofficeRealmRole = Keycloak.hasRealmRole("backoffice");
+
+    // get the keycloak object which has realm/accounts roles array
     $scope.keycloak = Keycloak.returnKeycloak();
-    console.log($scope.keycloak);
   });
 
 
@@ -37,4 +41,8 @@ angular.module('starter.controllers', [])
   $scope.manageAccount = function() {
     Keycloak.manageAccount();
   }
+
+  $scope.logout = function() {
+    Keycloak.logout();
+  };
 });

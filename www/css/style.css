@@ -45,3 +45,16 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
     background-color: #1fc79b;
     color: #fff;
 }
+
+.balanced, a.balanced {
+    color: #1fc79b;
+}
+
+.item-divider {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    min-height: 30px;
+    background-color: rgb(31, 199, 155);
+    color: #fff;
+    font-weight: 500;
+}

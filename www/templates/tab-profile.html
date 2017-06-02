@@ -23,8 +23,8 @@
 
 <div class="item item-body">
   <ion-list>
-    <ion-checkbox ng-model="user.enabled">Enabled</ion-checkbox>
-    <ion-checkbox ng-model="user.emailVerified">Email Verified</ion-checkbox>
+    <ion-checkbox ng-model="user.enabled" onclick="return false;">Enabled</ion-checkbox>
+    <ion-checkbox ng-model="user.emailVerified" onclick="return false;">Email Verified</ion-checkbox>
   </ion-list>
 </div>
 
@@ -32,6 +32,10 @@
 
 <button class="button button-full button-balanced" ng-click="keycloakLoadUserProfile()" ng-if="!showProfile">
 Show User Profile  <i class="icon ion-ios-arrow-right"></i>
+</button>
+
+<button class="button button-full button-balanced" ng-click="login()" ng-if="!showProfile">
+Login  <i class="icon ion-ios-arrow-right"></i>
 </button>
 
   </ion-content>

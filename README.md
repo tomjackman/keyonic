@@ -1,6 +1,6 @@
 # Keyonic
 ## Description
-Keycloak with Ionic & Angular.
+A simple Keycloak Sample Mobile App with Ionic & Angular. This is a small app that shows the majority of the functions in the Keycloak JS Adapter.
 
 ## Setup
 Run `ionic serve --address localhost` to start the application.

@@ -20,6 +20,11 @@ var keycloak = Keycloak({
   "use-resource-role-mappings": true
 });
 ```
+You can import the Keycloak Realm and Users JSON files [here](https://github.com/TommyJ1994/keypress/tree/master/keycloak) to populate Keycloak with the correct configuration.
+
+* Under the Realms section in Keycloak, add a new Realm with the Import option.
+* Import the keypress-realm.json file.
+* Once complete, visit the newly created realm and click the 'Import' button at the bottom left of the sidebar. You will import the users here. Choose the keypress-users-0.json file.
 
 ## Access Control Functionality
 Some UI elements are shown/hidden under the Access tab based on the logged in users role. These roles are:

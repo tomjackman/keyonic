@@ -7,6 +7,8 @@ Run `ionic serve --address localhost` to start the application.
 
 Ensure that you have the Web Origin configured in Keycloak. eg `*` or other.
 
+Also ensure that the redirectUri is pointing to where the ionic dev server is running. eg. `http://localhost:8100/*`
+
 ## Keycloak Configuration
 The following configuration was used for this application.
 
@@ -48,3 +50,6 @@ From here, you can see what auth server you have authenticated against, the real
 The account tab will allow you to manage your account (update some details like your password etc) and also logout.
 
 ![](www/img/sample3.png)
+
+### Known Issues
+* If you have CORS related plugins enabled in the browser, this can cause issues with Keycloak access origins, so please disable these.

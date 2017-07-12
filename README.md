@@ -2,14 +2,7 @@
 ## Description
 A simple Keycloak Sample Mobile App with Ionic & Angular. This is a small app that shows the majority of the functions in the Keycloak JS Adapter.
 
-## Setup
-Run `ionic serve --address localhost` to start the application.
-
-Ensure that you have the Web Origin configured in Keycloak. eg `*` or other.
-
-Also ensure that the redirectUri is pointing to where the ionic dev server is running. eg. `http://localhost:8100/*`
-
-## Keycloak Configuration
+## Installation
 The following configuration was used for this application.
 
 ```
@@ -27,6 +20,16 @@ You can import the Keycloak Realm and Users JSON files [here](https://github.com
 * Under the Realms section in Keycloak, add a new Realm with the Import option.
 * Import the keypress-realm.json file.
 * Once complete, visit the newly created realm and click the 'Import' button at the bottom left of the sidebar. You will import the users here. Choose the keypress-users-0.json file.
+
+You must first have a running Keycloak instance running as the Keycloak JS Adapter is being fetched from the Keycloak server itself, rather than via npm. 
+
+Note: In this sample application, Keycloak is expected to be already running off `localhost:8080`. This can be changed however in `www/index.html` under `<script src="http://localhost:8080/auth/js/keycloak.js"></script>`
+
+Run `ionic serve --address localhost` to start the application.
+
+Ensure that you have the Web Origin configured in Keycloak. eg `*` or other.
+
+Also ensure that the redirectUri is pointing to where the ionic dev server is running. eg. `http://localhost:8100/*`
 
 ## Access Control Functionality
 Some UI elements are shown/hidden under the Access tab based on the logged in users role. These roles are:

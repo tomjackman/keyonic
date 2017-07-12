@@ -5,6 +5,7 @@ var auth = {};
 
 angular.element(document).ready(function ($http) {
 
+  // keycloak config
   var keycloak = Keycloak({
     "realm": "keypress",
     "url": "http://localhost:8080/auth",
@@ -14,12 +15,15 @@ angular.element(document).ready(function ($http) {
     "use-resource-role-mappings": true
   });
 
+// initialise keycloak
 keycloak.init({onLoad: "login-required"}).success(function () {
     auth.loggedIn = true;
     auth.authz = keycloak;
+    // make auth/keycloak JS adapter available to controllers & services in the app
     module.factory('Auth', function() {
         return auth;
     });
+        // Start angular (starting angular before will cause issues with URL rewriting)
         angular.bootstrap(document, ["starter"]);
     }).error(function (err) {
             console.log(err);

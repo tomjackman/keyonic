@@ -2,6 +2,8 @@
 ## Description
 A simple Keycloak Sample Mobile App with Ionic & Angular. This is a small app that shows the majority of the functions in the Keycloak JS Adapter.
 
+**Note: This is no longer maintained. Please use [Keyonic v2](https://github.com/TommyJ1994/keyonic-v2) Instead.**
+
 ## Installation
 The following configuration was used for this application.
 
